@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Бүртгэлийн хуудас</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="../lab2/lab2.html">Нүүр</a></li>
+        <li><a href="../lab2/lab2.html">Анкет засах</a></li>
+        <li><a href="../lab2/lab2.html">Тусламж</a></li>
+      </ul>
+    </nav>
+    <main>
+      <section>
+        <h2>Хувийн мэдээлэл</h2>
+        <form action="submit_form.php" method="POST">
+          <div>
+            <label for="name">Нэр:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Нэрээ оруулна уу"
+            />
+          </div>
+          <br />
+          <div>
+            <label for="email">И-мэйл:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Майл хаягаа оруулна уу"
+            />
+          </div>
+          <br />
+          <div>
+            <label for="password">Нууц үг:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Нууц үгээ оруулна уу"
+            />
+          </div>
+          <br />
+          <div>
+            <label for="birthdate">Төрсөн огноо:</label>
+            <input type="date" id="birthdate" name="birthdate" required />
+          </div>
+          <br />
+          <div>
+            <p>Хүйс:</p>
+            <input type="radio" name="gender" value="male" />
+            <label for="male">Эрэгтэй</label>
+            <input type="radio" name="gender" value="female" />
+            <label for="female">Эмэгтэй</label>
+          </div>
+          <br />
+          <div>
+            <p>Сонирхол:</p>
+            <input
+              type="checkbox"
+              name="interest"
+              id="programming"
+              value="programming"
+            />
+            <label for="programming">Програм хөгжүүлэлт</label>
+            <input type="checkbox" name="interest" id="sports" value="sports" />
+            <label for="sports">Спорт</label>
+            <input type="checkbox" name="interest" id="music" value="music" />
+            <label for="music">Хөгжим</label>
+          </div>
+          <br />
+          <div>
+            <label for="country">Улс:</label>
+
+            <select id="country" name="country" required>
+              <option value="">-- Улсаа сонгоно уу --</option>
+              <option value="mongolia">Монгол</option>
+              <option value="korea">Өмнөд Солонгос</option>
+              <option value="japan">Япон</option>
+              <option value="usa">АНУ</option>
+              <option value="other">Бусад</option>
+            </select>
+          </div>
+          <br />
+          <button type="submit">Бүртгүүлэх</button>
+          <button type="reset">Цэвэрлэх</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Бүртгэлийн хуудас.</p>
+    </footer>
+  </body>
+</html>
