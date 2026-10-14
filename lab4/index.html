@@ -7,13 +7,35 @@
 
     <link rel="stylesheet" href="lab4.css" />
   </head>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navList = document.querySelector(".nav-list");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navList.classList.toggle("active");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Цэс хаах" : "Цэс нээх");
+    });
+  </script>
+
   <body>
     <header class="header">
       <h1 class="title">Online shop</h1>
     </header>
 
     <nav class="navbar">
-      <ul class="nav-list">
+      <button
+        class="menu-toggle"
+        aria-label="Цэс нээх"
+        aria-expanded="false"
+        aria-controls="nav-list"
+      >
+        ☰
+      </button>
+
+      <ul class="nav-list" id="nav-list">
         <li><a href="../lab2/lab2.html">Нүүр</a></li>
         <li><a href="../lab2/lab2.html">Бүтээгдэхүүн</a></li>
         <li><a href="../lab2/lab2.html">Холбоо барих</a></li>
