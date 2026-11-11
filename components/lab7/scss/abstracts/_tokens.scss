@@ -1,0 +1,86 @@
+// =========================================================
+// ДИЗАЙН ТОКЕН — бүх утга map хэлбэрээр энд төвлөрнө.
+// _root.scss эдгээрийг @each-ээр :root custom property болгоно.
+// =========================================================
+
+// Өнгө — цайвар горим
+$colors-light: (
+  "bg": #f4f6fb,
+  "surface": #ffffff,
+  "surface-2": #eef2f8,
+  "text": #1f2933,
+  "muted": #5b6675,
+  "border": #d9dee7,
+  "header": #2c3e50,
+  "accent": #2563eb,
+  "accent-hover": #1d4ed8,
+  "focus": #f59e0b,
+  "sun": #fbbf24,
+  "media-bg": #000000,
+);
+
+// Өнгө — бараан горим (зөвхөн өөрчлөгдөх утгууд)
+$colors-dark: (
+  "bg": #0f141b,
+  "surface": #19202a,
+  "surface-2": #222b37,
+  "text": #e6e9ef,
+  "muted": #a3adbb,
+  "border": #2f3a48,
+  "header": #111827,
+  "accent": #7aa7ff,
+  "accent-hover": #a3c2ff,
+);
+
+// Сүүдэр
+$shadows-light: (
+  "sm": 0 2px 6px rgb(0 0 0 / 0.08),
+  "lg": 0 16px 32px rgb(0 0 0 / 0.18),
+);
+
+$shadows-dark: (
+  "sm": 0 2px 6px rgb(0 0 0 / 0.4),
+  "lg": 0 16px 32px rgb(0 0 0 / 0.55),
+);
+
+// Радиус
+$radii: (
+  "sm": 6px,
+  "md": 10px,
+  "lg": 16px,
+  "full": 999px,
+);
+
+// Хугацаа
+$durations: (
+  "fast": 150ms,
+  "base": 250ms,
+  "slow": 600ms,
+);
+
+$stagger: 90ms;
+$ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+// Зай (px-ээр бичиж, rem() функцээр хөрвүүлнэ)
+$spaces: (
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 24px,
+  6: 32px,
+);
+
+// Breakpoint — тухайн өргөнөөс ЭХЭЛНЭ (min-width)
+$breakpoints: (
+  "md": 768px,
+  "lg": 1024px,
+);
+
+$font-stack:
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  Roboto,
+  sans-serif;
+$base-font-size: 16px;

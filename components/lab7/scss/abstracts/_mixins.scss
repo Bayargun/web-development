@@ -1,0 +1,52 @@
+@use "sass:map";
+@use "tokens" as *;
+
+@function -bp($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "Тодорхойгүй breakpoint: #{$name}. Боломжтой: #{map.keys($breakpoints)}";
+  }
+  @return map.get($breakpoints, $name);
+}
+
+@mixin respond($from: null, $to: null) {
+  @if $from and $to {
+    @media (min-width: -bp($from)) and (max-width: calc(#{-bp($to)} - 1px)) {
+      @content;
+    }
+  } @else if $from {
+    @media (min-width: -bp($from)) {
+      @content;
+    }
+  } @else if $to {
+    @media (max-width: calc(#{-bp($to)} - 1px)) {
+      @content;
+    }
+  }
+}
+@mixin flex-center(
+  $justify: center,
+  $align: center,
+  $direction: null,
+  $gap: null
+) {
+  display: flex;
+  @if $direction {
+    flex-direction: $direction;
+  }
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap {
+    gap: $gap;
+  }
+}
+@mixin hover-only {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+@mixin custom-props($map, $prefix) {
+  @each $name, $value in $map {
+    --#{$prefix}-#{$name}: #{$value};
+  }
+}

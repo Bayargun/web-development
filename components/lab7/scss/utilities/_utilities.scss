@@ -1,0 +1,51 @@
+@use "../abstracts" as *;
+
+// @each-ээр токен map-аас utility класс үүсгэнэ
+
+// Зай: .u-mt-1 … .u-mt-6, .u-mb-*, .u-gap-*
+@each $name, $_ in $spaces {
+  .u-mt-#{$name} {
+    margin-top: var(--space-#{$name});
+  }
+  .u-mb-#{$name} {
+    margin-bottom: var(--space-#{$name});
+  }
+  .u-gap-#{$name} {
+    gap: var(--space-#{$name});
+  }
+}
+
+// Өнгө: .u-text-muted, .u-bg-surface …
+@each $name, $_ in $colors-light {
+  .u-text-#{$name} {
+    color: var(--color-#{$name});
+  }
+  .u-bg-#{$name} {
+    background-color: var(--color-#{$name});
+  }
+}
+
+// Радиус: .u-radius-sm …
+@each $name, $_ in $radii {
+  .u-radius-#{$name} {
+    border-radius: var(--radius-#{$name});
+  }
+}
+
+// Breakpoint: .u-hide-below-md …
+@each $name, $_ in $breakpoints {
+  .u-hide-below-#{$name} {
+    @include respond($to: $name) {
+      display: none !important;
+    }
+  }
+}
+
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

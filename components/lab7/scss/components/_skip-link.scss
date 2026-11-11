@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: rem(-100px);
+  z-index: 200;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border-radius: var(--radius-sm);
+
+  &:focus {
+    top: var(--space-4);
+  }
+}

@@ -1,0 +1,33 @@
+@use "../abstracts" as *;
+
+.media {
+  &__title {
+    margin-bottom: var(--space-4);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, rem(320px)), 1fr));
+    gap: var(--space-5);
+  }
+
+  &__item {
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    background: var(--color-media-bg);
+  }
+
+  &__caption {
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.9rem;
+  }
+}

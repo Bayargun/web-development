@@ -1,0 +1,42 @@
+@use "sass:math";
+@use "sass:color";
+@use "tokens" as *;
+
+// px → rem.  rem(24px) => 1.5rem
+@function rem($px, $base: $base-font-size) {
+  @if math.unit($px) != "px" {
+    @error "rem() зөвхөн px утга авна, ирсэн нь: #{$px}";
+  }
+  @return math.div($px, $base) * 1rem;
+}
+
+// WCAG-ийн харьцангуй гэрэлтэлт (relative luminance)
+@function -linear($channel) {
+  $c: math.div($channel, 255);
+  @if $c <= 0.04045 {
+    @return math.div($c, 12.92);
+  }
+  @return math.pow(math.div($c + 0.055, 1.055), 2.4);
+}
+
+@function luminance($color) {
+  $r: -linear(color.channel($color, "red", $space: rgb));
+  $g: -linear(color.channel($color, "green", $space: rgb));
+  $b: -linear(color.channel($color, "blue", $space: rgb));
+  @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+@function contrast-ratio($a, $b) {
+  $la: luminance($a) + 0.05;
+  $lb: luminance($b) + 0.05;
+  @return math.div(math.max($la, $lb), math.min($la, $lb));
+}
+
+// Дэвсгэр өнгөн дээр илүү уншигдах текстийн өнгийг сонгоно.
+// contrast(#2563eb) => #ffffff,  contrast(#7aa7ff) => #0b1220
+@function contrast($bg, $dark: #0b1220, $light: #ffffff) {
+  @if contrast-ratio($bg, $light) >= contrast-ratio($bg, $dark) {
+    @return $light;
+  }
+  @return $dark;
+}
