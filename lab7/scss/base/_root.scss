@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "../abstracts" as *;
+
+@mixin dark-theme {
+  color-scheme: dark;
+  @include custom-props($colors-dark, "color");
+  --color-on-accent: #{contrast(map.get($colors-dark, "accent"))};
+  @include custom-props($shadows-dark, "shadow");
+}
+
+:root {
+  color-scheme: light;
+
+  @include custom-props($colors-light, "color");
+  --color-on-header: #{contrast(map.get($colors-light, "header"))};
+  --color-on-accent: #{contrast(map.get($colors-light, "accent"))};
+
+  @include custom-props($shadows-light, "shadow");
+  @include custom-props($radii, "radius");
+  @include custom-props($durations, "dur");
+  --stagger: #{$stagger};
+  --ease: #{$ease};
+
+  @each $name, $px in $spaces {
+    --space-#{$name}: #{rem($px)};
+  }
+}
+
+// Бараан горим: системийн тохиргоо эсвэл товчоор сонгосон
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-theme;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme;
+}

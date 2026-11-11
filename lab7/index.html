@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Зургийн цомог портал — SCSS</title>
+    <meta name="description" content="Зургийн цомог портал — gallery хэсэг (Лаб 7, SCSS)" />
+
+    <!-- Сэдвийг CSS ачаалахаас өмнө тохируулж, "цайвар → бараан" анивчихаас сэргийлнэ -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("js");
+        try {
+          var saved = localStorage.getItem("theme");
+          if (saved === "dark" || saved === "light") root.dataset.theme = saved;
+        } catch (e) {}
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://picsum.photos" />
+    <link rel="stylesheet" href="css/style.min.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Үндсэн агуулга руу шилжих</a>
+
+    <!-- Loader -->
+    <div class="loader" id="loader" role="status" aria-live="polite">
+      <span class="loader__spinner" aria-hidden="true"></span>
+      <span class="loader__text">Зургууд ачаалж байна…</span>
+    </div>
+
+    <header class="header">
+      <a class="header__brand" href="../index.html">
+        <!-- Inline SVG лого -->
+        <svg class="header__logo" viewBox="0 0 48 48" width="48" height="48" role="img" aria-labelledby="logo-title">
+          <title id="logo-title">Зургийн цомог портал — нүүр хуудас</title>
+          <rect x="4" y="9" width="40" height="30" rx="6" fill="none" stroke="currentColor" stroke-width="3" />
+          <circle class="header__logo-sun" cx="16" cy="19" r="4" />
+          <path d="M8 35 L19 24 L27 31 L32 27 L40 34" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <h1 class="header__title">Зургийн цомог портал</h1>
+    </header>
+
+    <nav class="navbar" aria-label="Үндсэн цэс">
+      <button class="btn navbar__toggle" type="button" aria-label="Цэс нээх" aria-expanded="false" aria-controls="nav-list">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <ul class="navbar__list" id="nav-list">
+        <li><a class="navbar__link" href="../index.html">Нүүр</a></li>
+        <li><a class="navbar__link" href="#gallery-title">Цомог</a></li>
+        <li><a class="navbar__link" href="#media-title">Медиа</a></li>
+      </ul>
+
+      <button class="btn navbar__theme" type="button" aria-pressed="false">
+        <span aria-hidden="true">🌙</span> Бараан горим
+      </button>
+    </nav>
+
+    <div class="layout">
+      <aside class="sidebar" aria-labelledby="albums-title">
+        <h2 class="sidebar__title" id="albums-title">Цомгууд</h2>
+        <ul class="sidebar__list">
+          <li><a class="sidebar__link" href="#gallery-title">Байгаль</a></li>
+          <li><a class="sidebar__link" href="#gallery-title">Түүх, соёл</a></li>
+          <li><a class="sidebar__link" href="#gallery-title">Аялал</a></li>
+          <li><a class="sidebar__link" href="#gallery-title">Хот</a></li>
+        </ul>
+      </aside>
+
+      <main class="layout__main" id="main">
+        <!-- ================= GALLERY ================= -->
+        <section class="gallery-section" aria-labelledby="gallery-title">
+          <h2 class="gallery-section__title" id="gallery-title">Онцлох зургууд</h2>
+          <p class="gallery-section__hint u-text-muted">Карт дээрх «Мэдээлэл» товчийг дарж зургийн нэр, огноо, газрыг харна. Esc — буцах.</p>
+
+          <ul class="gallery" id="gallery" aria-busy="true">
+            <li class="card">
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <div class="card__media">
+                    <img class="card__img" src="https://picsum.photos/seed/khuvsgul/600/400"
+                      srcset="https://picsum.photos/seed/khuvsgul/400/267 400w, https://picsum.photos/seed/khuvsgul/800/533 800w"
+                      sizes="(max-width: 767px) 100vw, 320px"
+                      width="600" height="400" alt="Нуурын эргийн байгалийн зураг" decoding="async" />
+                  </div>
+                  <div class="card__body">
+                    <h3 class="card__title">Хөвсгөл нуур</h3>
+                    <button class="btn card__btn" type="button" aria-expanded="false" aria-controls="info-1">Мэдээлэл</button>
+                  </div>
+                </div>
+                <div class="card__face card__face--back" id="info-1">
+                  <p class="card__label u-text-muted">Зургийн мэдээлэл</p>
+                  <dl class="card__meta">
+                    <div><dt class="card__term">Нэр</dt><dd class="card__value">Хөвсгөлийн үүр</dd></div>
+                    <div><dt class="card__term">Огноо</dt><dd class="card__value"><time datetime="2024-07-14">2024.07.14</time></dd></div>
+                    <div><dt class="card__term">Газар</dt><dd class="card__value">Хөвсгөл аймаг, Хатгал</dd></div>
+                  </dl>
+                  <button class="btn card__btn card__btn--back" type="button">Буцах</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="card">
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <div class="card__media">
+                    <img class="card__img" src="https://picsum.photos/seed/terelj/600/400"
+                      srcset="https://picsum.photos/seed/terelj/400/267 400w, https://picsum.photos/seed/terelj/800/533 800w"
+                      sizes="(max-width: 767px) 100vw, 320px"
+                      width="600" height="400" alt="Уулын хөндийн зураг" decoding="async" />
+                  </div>
+                  <div class="card__body">
+                    <h3 class="card__title">Тэрэлж</h3>
+                    <button class="btn card__btn" type="button" aria-expanded="false" aria-controls="info-2">Мэдээлэл</button>
+                  </div>
+                </div>
+                <div class="card__face card__face--back" id="info-2">
+                  <p class="card__label u-text-muted">Зургийн мэдээлэл</p>
+                  <dl class="card__meta">
+                    <div><dt class="card__term">Нэр</dt><dd class="card__value">Мэлхий хад</dd></div>
+                    <div><dt class="card__term">Огноо</dt><dd class="card__value"><time datetime="2024-05-02">2024.05.02</time></dd></div>
+                    <div><dt class="card__term">Газар</dt><dd class="card__value">Горхи-Тэрэлжийн БЦГ</dd></div>
+                  </dl>
+                  <button class="btn card__btn card__btn--back" type="button">Буцах</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="card">
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <div class="card__media">
+                    <img class="card__img" src="https://picsum.photos/seed/gobi/600/400"
+                      srcset="https://picsum.photos/seed/gobi/400/267 400w, https://picsum.photos/seed/gobi/800/533 800w"
+                      sizes="(max-width: 767px) 100vw, 320px"
+                      width="600" height="400" alt="Элсэн манхны зураг" decoding="async" />
+                  </div>
+                  <div class="card__body">
+                    <h3 class="card__title">Хонгорын элс</h3>
+                    <button class="btn card__btn" type="button" aria-expanded="false" aria-controls="info-3">Мэдээлэл</button>
+                  </div>
+                </div>
+                <div class="card__face card__face--back" id="info-3">
+                  <p class="card__label u-text-muted">Зургийн мэдээлэл</p>
+                  <dl class="card__meta">
+                    <div><dt class="card__term">Нэр</dt><dd class="card__value">Дуут манхан</dd></div>
+                    <div><dt class="card__term">Огноо</dt><dd class="card__value"><time datetime="2023-09-21">2023.09.21</time></dd></div>
+                    <div><dt class="card__term">Газар</dt><dd class="card__value">Өмнөговь аймаг, Сэврэй</dd></div>
+                  </dl>
+                  <button class="btn card__btn card__btn--back" type="button">Буцах</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="card">
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <div class="card__media">
+                    <img class="card__img" src="https://picsum.photos/seed/orkhon/600/400"
+                      srcset="https://picsum.photos/seed/orkhon/400/267 400w, https://picsum.photos/seed/orkhon/800/533 800w"
+                      sizes="(max-width: 767px) 100vw, 320px"
+                      width="600" height="400" alt="Голын хөндийн зураг" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="card__body">
+                    <h3 class="card__title">Орхоны хүрхрээ</h3>
+                    <button class="btn card__btn" type="button" aria-expanded="false" aria-controls="info-4">Мэдээлэл</button>
+                  </div>
+                </div>
+                <div class="card__face card__face--back" id="info-4">
+                  <p class="card__label u-text-muted">Зургийн мэдээлэл</p>
+                  <dl class="card__meta">
+                    <div><dt class="card__term">Нэр</dt><dd class="card__value">Улаан цутгалан</dd></div>
+                    <div><dt class="card__term">Огноо</dt><dd class="card__value"><time datetime="2024-08-03">2024.08.03</time></dd></div>
+                    <div><dt class="card__term">Газар</dt><dd class="card__value">Өвөрхангай аймаг</dd></div>
+                  </dl>
+                  <button class="btn card__btn card__btn--back" type="button">Буцах</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="card">
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <div class="card__media">
+                    <img class="card__img" src="https://picsum.photos/seed/kharkhorin/600/400"
+                      srcset="https://picsum.photos/seed/kharkhorin/400/267 400w, https://picsum.photos/seed/kharkhorin/800/533 800w"
+                      sizes="(max-width: 767px) 100vw, 320px"
+                      width="600" height="400" alt="Түүхэн дурсгалт газрын зураг" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="card__body">
+                    <h3 class="card__title">Хархорин</h3>
+                    <button class="btn card__btn" type="button" aria-expanded="false" aria-controls="info-5">Мэдээлэл</button>
+                  </div>
+                </div>
+                <div class="card__face card__face--back" id="info-5">
+                  <p class="card__label u-text-muted">Зургийн мэдээлэл</p>
+                  <dl class="card__meta">
+                    <div><dt class="card__term">Нэр</dt><dd class="card__value">Эрдэнэ Зуу хийд</dd></div>
+                    <div><dt class="card__term">Огноо</dt><dd class="card__value"><time datetime="2023-06-11">2023.06.11</time></dd></div>
+                    <div><dt class="card__term">Газар</dt><dd class="card__value">Өвөрхангай, Хархорин сум</dd></div>
+                  </dl>
+                  <button class="btn card__btn card__btn--back" type="button">Буцах</button>
+                </div>
+              </div>
+            </li>
+
+            <li class="card">
+              <div class="card__inner">
+                <div class="card__face card__face--front">
+                  <div class="card__media">
+                    <img class="card__img" src="https://picsum.photos/seed/ulaanbaatar/600/400"
+                      srcset="https://picsum.photos/seed/ulaanbaatar/400/267 400w, https://picsum.photos/seed/ulaanbaatar/800/533 800w"
+                      sizes="(max-width: 767px) 100vw, 320px"
+                      width="600" height="400" alt="Хотын үдшийн зураг" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="card__body">
+                    <h3 class="card__title">Улаанбаатар</h3>
+                    <button class="btn card__btn" type="button" aria-expanded="false" aria-controls="info-6">Мэдээлэл</button>
+                  </div>
+                </div>
+                <div class="card__face card__face--back" id="info-6">
+                  <p class="card__label u-text-muted">Зургийн мэдээлэл</p>
+                  <dl class="card__meta">
+                    <div><dt class="card__term">Нэр</dt><dd class="card__value">Сүхбаатарын талбай</dd></div>
+                    <div><dt class="card__term">Огноо</dt><dd class="card__value"><time datetime="2024-12-31">2024.12.31</time></dd></div>
+                    <div><dt class="card__term">Газар</dt><dd class="card__value">Улаанбаатар хот</dd></div>
+                  </dl>
+                  <button class="btn card__btn card__btn--back" type="button">Буцах</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ================= MEDIA ================= -->
+        <section class="media u-mt-6" aria-labelledby="media-title">
+          <h2 class="media__title" id="media-title">Медиа</h2>
+
+          <div class="media__grid">
+            <figure class="media__item">
+              <video class="media__frame" controls preload="metadata" playsinline width="640" height="360"
+                poster="https://picsum.photos/seed/flowerposter/640/360">
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+                <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+                <track kind="captions" src="captions.vtt" srclang="mn" label="Монгол" default />
+                Таны хөтөч видео тоглуулахыг дэмжихгүй байна.
+                <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">Видеог татах</a>.
+              </video>
+              <figcaption class="media__caption u-text-muted">Богино видео (CC0, MDN) — монгол хадмалтай.</figcaption>
+            </figure>
+
+            <figure class="media__item">
+              <iframe
+                class="media__frame"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=106.85%2C47.88%2C106.98%2C47.95&amp;layer=mapnik&amp;marker=47.9186%2C106.9176"
+                title="Улаанбаатар хотын газрын зураг (OpenStreetMap)"
+                width="640" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <figcaption class="media__caption u-text-muted">
+                Газрын зураг —
+                <a href="https://www.openstreetmap.org/?mlat=47.9186&amp;mlon=106.9176#map=14/47.9186/106.9176">томоор харах</a>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2026 Зургийн цомог портал. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </footer>
+  </body>
+</html>

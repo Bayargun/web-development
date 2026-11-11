@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "tokens" as *;
+
+// Breakpoint mixin.
+//   @include respond(md)          => (min-width: 768px)
+//   @include respond($to: md)     => (max-width: 767px)
+//   @include respond(md, lg)      => (min-width: 768px) and (max-width: 1023px)
+@function -bp($name) {
+  @if not map.has-key($breakpoints, $name) {
+    @error "Тодорхойгүй breakpoint: #{$name}. Боломжтой: #{map.keys($breakpoints)}";
+  }
+  @return map.get($breakpoints, $name);
+}
+
+@mixin respond($from: null, $to: null) {
+  @if $from and $to {
+    @media (min-width: -bp($from)) and (max-width: -bp($to) - 1px) {
+      @content;
+    }
+  } @else if $from {
+    @media (min-width: -bp($from)) {
+      @content;
+    }
+  } @else if $to {
+    @media (max-width: -bp($to) - 1px) {
+      @content;
+    }
+  }
+}
+
+// Flex-ээр төвлөрүүлэх (тэнхлэг бүрийг өөрчилж болно)
+@mixin flex-center($justify: center, $align: center, $direction: null, $gap: null) {
+  display: flex;
+  @if $direction {
+    flex-direction: $direction;
+  }
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+// Зөвхөн хулганатай төхөөрөмж дээр hover
+@mixin hover-only {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+// Map-аас custom property үүсгэх: --{prefix}-{key}: value
+@mixin custom-props($map, $prefix) {
+  @each $name, $value in $map {
+    --#{$prefix}-#{$name}: #{$value};
+  }
+}

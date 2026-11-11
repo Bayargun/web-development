@@ -1,0 +1,28 @@
+// =========================================================
+// Лаб 7 — Зургийн цомог портал (SCSS)
+// Partial-уудыг cascade-ийн дарааллаар нь импортлоно.
+// =========================================================
+
+// 1. Base
+@use "base/root";
+@use "base/reset";
+@use "base/base";
+
+// 2. Layout
+@use "layout/header";
+@use "layout/navbar";
+@use "layout/layout";
+@use "layout/sidebar";
+@use "layout/footer";
+
+// 3. Components
+@use "components/skip-link";
+@use "components/button";
+@use "components/loader";
+@use "components/gallery";
+@use "components/card";
+@use "components/media";
+
+// 4. Utilities (хамгийн сүүлд — давамгайлна)
+@use "utilities/utilities";
+@use "utilities/motion";

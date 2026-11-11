@@ -1,0 +1,48 @@
+// prefers-reduced-motion хамгаалалт — хамгийн сүүлд импортлогдоно
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --stagger: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  // Хөдөлгөөнгүй: өргөх, томруулах эффектийг хасна
+  .card:hover,
+  .card:focus-within,
+  .card:hover .card__img,
+  .card:focus-within .card__img {
+    transform: none;
+  }
+
+  // Flip-ийг эргүүлэлтгүйгээр — шууд солигдоно
+  .card--flipped .card__inner,
+  .card__face--back {
+    transform: none;
+  }
+
+  .card__face--back {
+    visibility: hidden;
+  }
+
+  .card--flipped .card__face--back {
+    visibility: visible;
+  }
+
+  .card--flipped .card__face--front {
+    visibility: hidden;
+  }
+
+  .loader__spinner {
+    animation: none;
+  }
+}

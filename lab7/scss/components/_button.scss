@@ -1,0 +1,12 @@
+// Өнгөт товчны нийтлэг загвар (цэс, сэдэв, flip товч)
+.btn {
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  transition: background-color var(--dur-fast) var(--ease);
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
+}
