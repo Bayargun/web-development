@@ -32,3 +32,8 @@
   --bs-btn-disabled-border-color: var(--brand);
   --bs-btn-focus-shadow-rgb: var(--brand-rgb);
 }
+
+.card-img-top {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
