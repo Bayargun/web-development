@@ -1,0 +1,14 @@
+{
+  "name": "lab8-tailwind",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Лаб 8 — Зургийн цомог Tailwind CSS v4-өөр",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}

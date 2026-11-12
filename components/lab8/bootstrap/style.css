@@ -1,0 +1,34 @@
+/* Брэндийн өнгө — нэг газар CSS variable-аар */
+:root {
+  --brand: #2563eb;
+  --brand-hover: #1d4ed8;
+  --brand-active: #1e40af;
+  --brand-contrast: #ffffff;
+  --brand-rgb: 37, 99, 235;
+}
+
+[data-bs-theme="dark"] {
+  --brand: #7aa7ff;
+  --brand-hover: #a3c2ff;
+  --brand-active: #c2d6ff;
+  --brand-contrast: #0b1220;
+  --brand-rgb: 122, 167, 255;
+}
+
+/* Bootstrap-ийн .btn нь --bs-btn-* хувьсагчаар ажилладаг тул
+   зөвхөн хувьсагчийг дахин тодорхойлоход шинэ товч бэлэн болно */
+.btn-brand {
+  --bs-btn-color: var(--brand-contrast);
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-color: var(--brand-contrast);
+  --bs-btn-hover-bg: var(--brand-hover);
+  --bs-btn-hover-border-color: var(--brand-hover);
+  --bs-btn-active-color: var(--brand-contrast);
+  --bs-btn-active-bg: var(--brand-active);
+  --bs-btn-active-border-color: var(--brand-active);
+  --bs-btn-disabled-color: var(--brand-contrast);
+  --bs-btn-disabled-bg: var(--brand);
+  --bs-btn-disabled-border-color: var(--brand);
+  --bs-btn-focus-shadow-rgb: var(--brand-rgb);
+}
