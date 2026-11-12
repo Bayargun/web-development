@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Dark mode-ыг системээс биш, <html data-theme="dark"> атрибутаас хамааруулна */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Брэндийн өнгө — bg-brand, text-brand, outline-brand … utility автоматаар үүснэ */
+@theme {
+  --color-brand: #2563eb;
+  --color-brand-hover: #1d4ed8;
+  --color-brand-soft: #7aa7ff;
+  --color-brand-softer: #a3c2ff;
+}
