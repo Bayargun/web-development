@@ -32,3 +32,10 @@
   --bs-btn-disabled-border-color: var(--brand);
   --bs-btn-focus-shadow-rgb: var(--brand-rgb);
 }
+
+/* Бүх зургийг ижил хэмжээтэй (3:2) болгоно. Өөр харьцаатай зургийг
+   сунгахгүйгээр голоос нь тайрч дүүргэнэ. */
+.card-img-top {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
