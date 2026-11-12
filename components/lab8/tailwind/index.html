@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="mn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Зургийн цомог — Tailwind</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22%3E%3Crect x=%224%22 y=%229%22 width=%2240%22 height=%2230%22 rx=%226%22 fill=%22%232563eb%22/%3E%3Ccircle cx=%2216%22 cy=%2219%22 r=%224%22 fill=%22%23fbbf24%22/%3E%3C/svg%3E" />
+    <meta name="description" content="Лаб 8: Зургийн цомог портал Tailwind CSS v4-өөр" />
+    <script>
+      (function () {
+        var t;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <link rel="stylesheet" href="dist/output.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-100">
+    <a class="sr-only focus:not-sr-only focus:absolute focus:m-2 focus:rounded-md focus:bg-brand focus:px-4 focus:py-2 focus:text-white" href="#main">Үндсэн агуулга руу шилжих</a>
+
+    <nav class="border-b border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800" aria-label="Үндсэн цэс">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-2">
+        <a class="flex items-center gap-2 py-1 text-xl font-semibold" href="../../../index.html">
+          <svg width="32" height="32" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+            <rect x="4" y="9" width="40" height="30" rx="6" fill="none" stroke="currentColor" stroke-width="3" />
+            <circle cx="16" cy="19" r="4" fill="#fbbf24" />
+            <path d="M8 35 L19 24 L27 31 L32 27 L40 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Зургийн цомог
+        </a>
+        <button class="rounded-md border border-slate-300 px-3 py-1.5 md:hidden dark:border-slate-600" type="button" id="menuToggle"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Цэс нээх">
+          <span aria-hidden="true" class="text-xl">☰</span>
+        </button>
+        <div class="hidden w-full flex-col gap-3 pb-3 data-open:flex md:flex md:w-auto md:flex-1 md:flex-row md:items-center md:pb-0" id="mainNav">
+          <ul class="flex flex-col md:mr-auto md:flex-row">
+            <li><a class="block px-2 py-2 text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white" href="../../../index.html">Нүүр</a></li>
+            <li><a class="block px-2 py-2 text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white" href="#gallery-title">Цомог</a></li>
+            <li><a class="block px-2 py-2 text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white" href="#upload-title">Зураг нэмэх</a></li>
+          </ul>
+          <button class="self-start rounded-md border border-slate-500 px-3 py-1.5 text-slate-700 hover:bg-slate-600 hover:text-white md:self-auto dark:border-slate-400 dark:text-slate-200" type="button" id="themeToggle" aria-pressed="false">
+            <span aria-hidden="true">🌙</span> Бараан горим
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main" class="mx-auto max-w-6xl px-4 py-12">
+      <header class="mb-12">
+        <h1 class="mb-2 text-4xl font-bold md:text-5xl">Зургийн цомог портал</h1>
+        <p class="text-xl text-slate-600 dark:text-slate-300">Монголын байгаль, түүхэн газруудын зургийн цомог.</p>
+      </header>
+
+      <section class="mb-12" aria-labelledby="gallery-title">
+        <h2 id="gallery-title" class="mb-6 text-2xl font-semibold">Онцлох зургууд</h2>
+        <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <li>
+            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <img src="../images/khuvsgul.webp" class="aspect-3/2 w-full object-cover" alt="Нуурын эрэг, уулсын дүрслэл" width="800" height="533" decoding="async" />
+              <div class="flex-1 p-4">
+                <h3 class="mb-2 text-xl font-semibold">Хөвсгөл нуур</h3>
+                <p class="text-slate-600 dark:text-slate-300">Хөвсгөл аймаг · <time datetime="2024-07-14">2024.07.14</time></p>
+              </div>
+              <div class="px-4 pb-4">
+                <a href="../images/khuvsgul.webp" class="inline-flex items-center rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer">Томоор харах</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <img src="../images/terelj.webp" class="aspect-3/2 w-full object-cover" alt="Хад, ногоон хөндийн дүрслэл" width="800" height="533" decoding="async" />
+              <div class="flex-1 p-4">
+                <h3 class="mb-2 text-xl font-semibold">Тэрэлж</h3>
+                <p class="text-slate-600 dark:text-slate-300">Горхи-Тэрэлж · <time datetime="2024-05-02">2024.05.02</time></p>
+              </div>
+              <div class="px-4 pb-4">
+                <a href="../images/terelj.webp" class="inline-flex items-center rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer">Томоор харах</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <img src="../images/gobi.webp" class="aspect-3/2 w-full object-cover" alt="Элсэн манхны дүрслэл" width="800" height="533" decoding="async" />
+              <div class="flex-1 p-4">
+                <h3 class="mb-2 text-xl font-semibold">Хонгорын элс</h3>
+                <p class="text-slate-600 dark:text-slate-300">Өмнөговь аймаг · <time datetime="2023-09-21">2023.09.21</time></p>
+              </div>
+              <div class="px-4 pb-4">
+                <a href="../images/gobi.webp" class="inline-flex items-center rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer">Томоор харах</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <img src="../images/orkhon.webp" class="aspect-3/2 w-full object-cover" alt="Хүрхрээний дүрслэл" width="800" height="533" loading="lazy" decoding="async" />
+              <div class="flex-1 p-4">
+                <h3 class="mb-2 text-xl font-semibold">Орхоны хүрхрээ</h3>
+                <p class="text-slate-600 dark:text-slate-300">Өвөрхангай аймаг · <time datetime="2024-08-03">2024.08.03</time></p>
+              </div>
+              <div class="px-4 pb-4">
+                <a href="../images/orkhon.webp" class="inline-flex items-center rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer">Томоор харах</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <img src="../images/kharkhorin.webp" class="aspect-3/2 w-full object-cover" alt="Хийдийн хэрмийн дүрслэл" width="800" height="533" loading="lazy" decoding="async" />
+              <div class="flex-1 p-4">
+                <h3 class="mb-2 text-xl font-semibold">Хархорин</h3>
+                <p class="text-slate-600 dark:text-slate-300">Хархорин сум · <time datetime="2023-06-11">2023.06.11</time></p>
+              </div>
+              <div class="px-4 pb-4">
+                <a href="../images/kharkhorin.webp" class="inline-flex items-center rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer">Томоор харах</a>
+              </div>
+            </article>
+          </li>
+
+          <li>
+            <article class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
+              <img src="../images/ulaanbaatar.webp" class="aspect-3/2 w-full object-cover" alt="Шөнийн хотын дүрслэл" width="800" height="533" loading="lazy" decoding="async" />
+              <div class="flex-1 p-4">
+                <h3 class="mb-2 text-xl font-semibold">Улаанбаатар</h3>
+                <p class="text-slate-600 dark:text-slate-300">Улаанбаатар хот · <time datetime="2024-12-31">2024.12.31</time></p>
+              </div>
+              <div class="px-4 pb-4">
+                <a href="../images/ulaanbaatar.webp" class="inline-flex items-center rounded-md bg-brand px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer">Томоор харах</a>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="upload-title">
+        <h2 id="upload-title" class="mb-6 text-2xl font-semibold">Зураг нэмэх</h2>
+        <form class="group grid grid-cols-1 gap-4 md:grid-cols-6" id="uploadForm" novalidate>
+          <div class="md:col-span-3">
+            <label for="title" class="mb-1 block font-medium">Гарчиг</label>
+            <input type="text" class="peer block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-2 focus:outline-brand/40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 user-invalid:border-red-600 group-data-submitted:invalid:border-red-600 dark:user-invalid:border-red-400 dark:group-data-submitted:invalid:border-red-400" id="title" name="title" minlength="2" required />
+            <p class="mt-1 hidden text-sm text-red-700 peer-user-invalid:block group-data-submitted:peer-invalid:block dark:text-red-400">Гарчиг дор хаяж 2 тэмдэгт байна.</p>
+          </div>
+          <div class="md:col-span-3">
+            <label for="email" class="mb-1 block font-medium">Имэйл</label>
+            <input type="email" class="peer block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-2 focus:outline-brand/40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 user-invalid:border-red-600 group-data-submitted:invalid:border-red-600 dark:user-invalid:border-red-400 dark:group-data-submitted:invalid:border-red-400" id="email" name="email" autocomplete="email" required />
+            <p class="mt-1 hidden text-sm text-red-700 peer-user-invalid:block group-data-submitted:peer-invalid:block dark:text-red-400">Зөв имэйл хаяг оруулна уу.</p>
+          </div>
+          <div class="md:col-span-2">
+            <label for="place" class="mb-1 block font-medium">Газар</label>
+            <input type="text" class="peer block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-2 focus:outline-brand/40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 user-invalid:border-red-600 group-data-submitted:invalid:border-red-600 dark:user-invalid:border-red-400 dark:group-data-submitted:invalid:border-red-400" id="place" name="place" required />
+            <p class="mt-1 hidden text-sm text-red-700 peer-user-invalid:block group-data-submitted:peer-invalid:block dark:text-red-400">Газрын нэрийг оруулна уу.</p>
+          </div>
+          <div class="md:col-span-2">
+            <label for="date" class="mb-1 block font-medium">Огноо</label>
+            <input type="date" class="peer block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-2 focus:outline-brand/40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 user-invalid:border-red-600 group-data-submitted:invalid:border-red-600 dark:user-invalid:border-red-400 dark:group-data-submitted:invalid:border-red-400" id="date" name="date" required />
+            <p class="mt-1 hidden text-sm text-red-700 peer-user-invalid:block group-data-submitted:peer-invalid:block dark:text-red-400">Огноог сонгоно уу.</p>
+          </div>
+          <div class="md:col-span-2">
+            <label for="album" class="mb-1 block font-medium">Цомог</label>
+            <select class="peer block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-2 focus:outline-brand/40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 user-invalid:border-red-600 group-data-submitted:invalid:border-red-600 dark:user-invalid:border-red-400 dark:group-data-submitted:invalid:border-red-400" id="album" name="album" required>
+              <option value="" selected disabled>Сонгох…</option>
+              <option>Байгаль</option>
+              <option>Түүх, соёл</option>
+              <option>Аялал</option>
+              <option>Хот</option>
+            </select>
+            <p class="mt-1 hidden text-sm text-red-700 peer-user-invalid:block group-data-submitted:peer-invalid:block dark:text-red-400">Цомгоо сонгоно уу.</p>
+          </div>
+          <div class="md:col-span-6">
+            <label for="photo" class="mb-1 block font-medium">Зураг</label>
+            <input type="file" class="peer block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-2 focus:outline-brand/40 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 user-invalid:border-red-600 group-data-submitted:invalid:border-red-600 dark:user-invalid:border-red-400 dark:group-data-submitted:invalid:border-red-400 file:mr-3 file:rounded file:border-0 file:bg-slate-200 file:px-3 file:py-1 dark:file:bg-slate-700 dark:file:text-slate-100" id="photo" name="photo" accept="image/*" required />
+            <p class="mt-1 hidden text-sm text-red-700 peer-user-invalid:block group-data-submitted:peer-invalid:block dark:text-red-400">Зургийн файлаа сонгоно уу.</p>
+          </div>
+          <div class="md:col-span-6">
+            <div class="flex items-start gap-2">
+              <input class="peer mt-1 size-4 accent-brand" type="checkbox" id="agree" name="agree" required />
+              <label class="peer-user-invalid:text-red-700 group-data-submitted:peer-invalid:text-red-700 dark:peer-user-invalid:text-red-400 dark:group-data-submitted:peer-invalid:text-red-400" for="agree">Зураг миний өөрийн бүтээл гэдгийг баталж байна</label>
+            </div>
+          </div>
+          <div class="md:col-span-6">
+            <button class="inline-flex items-center rounded-md bg-brand px-4 py-2 text-base font-medium text-white hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand dark:bg-brand-soft dark:text-slate-950 dark:hover:bg-brand-softer" type="submit">Илгээх</button>
+          </div>
+          <div class="md:col-span-6">
+            <p class="hidden rounded-md border border-green-300 bg-green-50 px-4 py-3 text-green-800 dark:border-green-700 dark:bg-green-950 dark:text-green-200" id="formSuccess" role="status">Зураг амжилттай илгээгдлээ!</p>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 py-6 text-center text-slate-600 dark:border-slate-700 dark:text-slate-300">
+      <p>&copy; 2026 Зургийн цомог портал · Tailwind CSS 4</p>
+    </footer>
+  </body>
+</html>
